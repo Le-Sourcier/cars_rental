@@ -1,25 +1,38 @@
 import React from "react";
 
-function Card() {
+interface CardProps {
+  icon: string;
+  title: string;
+  description: string;
+}
+
+function Card({ icon, title, description }: CardProps) {
   return (
-    <div className="max-w-sm mx-auto p-2 bg-gray-50 rounded-xl shadow">
-      {/* Illustration */}
-      <div className="h-[200px] bg-gray-200 rounded-2xl mb-4"></div>
+    <div className="group hover:scale-[1.02] transition-transform duration-300">
+      <div className="h-full p-6 bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+        {/* Icon */}
+        <div className="w-12 h-12 mb-4 rounded-lg bg-primary-50 flex items-center justify-center text-2xl">
+          {icon}
+        </div>
 
-      {/* Texte de service */}
-      <div className="space-y-2 text-left">
-        <h3 className="font-bold text-lg text-gray-600">
-          Réservation en ligne
-        </h3>
-        <p className="text-sm text-gray-600">
-          Réservez votre voiture facilement en ligne, sans vous déplacer.
-          Profitez d’une expérience fluide, rapide et sécurisée.
-        </p>
+        {/* Content */}
+        <div className="space-y-3">
+          <h3 className="font-bold text-xl text-neutral-900">
+            {title}
+          </h3>
+          <p className="text-neutral-600">
+            {description}
+          </p>
+        </div>
+
+        {/* Call to action */}
+        <div className="mt-6">
+          <button className="text-primary-600 font-medium group-hover:text-primary-700 transition-colors duration-300 flex items-center gap-2">
+            En savoir plus
+            <span className="transition-transform group-hover:translate-x-1">→</span>
+          </button>
+        </div>
       </div>
-
-      <button className="mt-4 bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600">
-        En savoir plus
-      </button>
     </div>
   );
 }
